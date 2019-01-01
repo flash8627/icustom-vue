@@ -83,5 +83,18 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": ".eslintrc.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flash8627/icustom-vue.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flash8627/icustom-vue/issues"
+  },
+  "homepage": "https://github.com/flash8627/icustom-vue#readme"
 }
