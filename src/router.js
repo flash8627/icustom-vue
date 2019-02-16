@@ -9,6 +9,11 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "about" */ './views/Login.vue')
+    },
+    {
       path: '/',
       name: 'home',
       component: Home
@@ -41,5 +46,14 @@ export default new Router({
       name: 'shopping',
       component: () => import(/* webpackChunkName: "about" */ './views/Shopping.vue')
     }
-  ]
+  ],// 路由接口代理配置
+  proxyTable: {
+    '/api': {
+      target: 'http://localhost:8801',
+      changeOrigin: true,
+      pathRewrite: {
+          '^/api': ''
+      }
+    }
+  }
 })
