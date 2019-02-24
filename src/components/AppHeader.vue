@@ -1,27 +1,167 @@
 <template>
   <div class="app-header">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/blog">Blog</router-link> |
-      <router-link to="/product">Product</router-link> |
-      <router-link to="/shopping">Shopping</router-link> |
-      <router-link to="/system-manager">system manager</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    
+    <div class="header-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<ul class="list-inline">
+						<li>
+							<div class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false"><img
+									src="../assets/images/is.png" alt="" /> English <i
+									class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">English</a></li>
+									<li><a href="#">United States (English)</a></li>
+									<li><a href="#">Russia (Pусский)</a></li>
+									<li><a href="#">China (简体中文)</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<ul class="list-inline">
+						<li><a href="#"><i class="fa fa-mobile"></i> +40088888888</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i>
+								gwtjs@live.cn</a></li>
+					</ul>
+				</div>
+				<div class="col-sm-5">
+					<ul class="list-inline pull-right">
+						<li>
+							<div class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-user"></i> My Account <i
+									class="fa fa-angle-down"></i></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Account Set</a></li>
+									<li><a href="/logout">Log out</a></li>
+								</ul>
+							</div>
+						</li>
+						
+						<li><a href="#"><i class="fa fa-heart-o"></i> Wishlist
+								(0)</a></li>
+						<li><a href="#"><i class="fa fa-file-o"></i> Compare (0)</a></li>
+						<li><a class="register" href="#">Register</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- logo and adds -->
+	<div class="logo-add">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="logo">
+						<i class="fa fa-diamond"></i>I - Custom
+					</div>
+				</div>
+				<div class="col-sm-8"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- header bottom -->
+	<div class="header-bottom">
+		<div class="row">
+			<div class="col-sm-12">
+				<nav class="navbar navbar-default">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse" data-target="#header-bottom"
+								aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+						</div>
+
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="header-bottom">
+							<!-- menu start -->
+								<ul id="nav">
+									<li><a href="#">Home</a></li>
+									<li><a href="#">About</a>
+										<ul>
+											<li><a href="#">About Us</a></li>
+											<li><a href="#">About Them</a></li>
+											<li><a href="#">About You</a>
+												<ul>
+													<li><a href="#">More About Us</a></li>
+													<li><a href="#">More About Them</a></li>
+													<li><a href="#">More About You</a></li>						
+												</ul>
+											</li>						
+										</ul>
+									</li>
+									<li><a href="#">Portfolio</a></li>
+									<li><a href="#">Contact</a>
+										<ul>
+											<li><a href="#">International</a></li>
+											<li><a href="#">Corporate</a>
+												<ul>
+													<li><a href="#">International</a></li>
+													<li><a href="#">Corporate</a></li>
+													<li><a href="#">American Offices</a></li>
+												</ul>
+											</li>
+											<li><a href="#">American Offices</a></li>						
+										</ul>
+									</li>	
+									<li><a href="#">Mission Statement</a></li>		
+								</ul>
+							<!-- menu end -->
+							<form class="navbar-form navbar-right" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Search...">
+									<span class="nav-search"><a href="#"><i
+											class="fa fa-search"></i></a></span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+  	</div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
+// http://localhost:8080/services/sys/resourcesService/findResourcesSiteMenu
 
 export default {
   name: 'app-header',
   components: {
     //HelloWorld
+  },
+  created(){
+    this.$axios
+        .get('/services/sys/resourcesService/findResourcesSiteMenu', {})
+        .then(response => {
+			console.log(response);
+          this.response = JSON.stringify(response.data);
+          if (response.data.code === 200) {
+            this.$router.replace({path: '/'});
+          }else{
+            this.reset();
+          }
+    })
   }
 }
 </script>
-<style>
+
+<style lang="scss">
+
+
 
 </style>

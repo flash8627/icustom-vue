@@ -1,5 +1,8 @@
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production' ? '/' : '/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/production-sub-path/'
+    : '/',
+  //baseUrl: process.env.NODE_ENV === 'production' ? '/' : '/',
   devServer: {
     port: 8086, // 端口号
     //host: 'localhost',

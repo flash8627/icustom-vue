@@ -54,6 +54,13 @@ export default new Router({
       pathRewrite: {
           '^/api': ''
       }
+    },
+    '/service': {
+      target: 'http://localhost:8080',
+      changeOrigin: true,
+      pathRewrite: {
+          '^/service': ''
+      }
     }
   }
 })
