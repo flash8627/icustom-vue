@@ -32,12 +32,12 @@ export default {
   },
   methods: {
     reset(){
-      console.info('login reset info:','reset...');
+      //console.info('login reset info:','reset...');
       this.loginInfoVo.username = '';
       this.loginInfoVo.password = '';
     },
     login () {
-      console.info('login info:','submit...');
+      //console.info('login info:','submit...');
       this.$axios
         .post('/login', {
           username: this.loginInfoVo.username,

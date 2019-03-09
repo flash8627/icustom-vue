@@ -2,28 +2,26 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-//import bootstrap from 'bootstrap/dist/js/bootstrap.js';
-
 
 var axios = require('axios')
-//服务请求路径
-//cloud test:axios.defaults.baseURL = 'http://localhost:8801'
-axios.defaults.baseURL = 'http://localhost:8080'
+//请求路径
+axios.defaults.baseURL = 'http://localhost:8801'
 Vue.prototype.$axios = axios
 
+/**
+ import './assets/bootstrap-4.1.3-dist/css/bootstrap.min.css'  
+import './assets/bootstrap-4.1.3-dist/js/bootstrap.min'  
+import bootstrap from './bootstrap'
+import $ from 'jquery'
+import './assets/css/bootstrap.min.css'
+import './assets/js/bootstrap.min' */
+
 import './registerServiceWorker'
-
-import './assets/jquery/themes/icon.css'
-import './assets/css/app.css'
-
-//引入公用common/common.js 
-import Comjs from './common/common'
-//添加到vue属性中
-Vue.prototype.$comjs = Comjs
-//this.$comjs.title('你点我了');
+//import element form './element'
 
 Vue.config.productionTip = false
 //Vue.config.baseUrl = "";
+
 
 new Vue({
   router,
